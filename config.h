@@ -50,9 +50,9 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
- 	{ "[\\]",      dwindle },
-	{ "[HHH]",      grid },
+	{ "",      tile },    /* first entry is default */
+ 	{ "",      dwindle },
+	{ "",      grid },
 	{ "[M]",      monocle },
 	{ NULL,       NULL },
 };
@@ -91,7 +91,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /*tiled*/
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[3]} }, /*monocle*/
 	{ MODKEY,                       XK_s,      togglefloating, {0} }, /*float*/
-	{ MODKEY|ShiftMask,             XK_F11,    togglefullscr,  {0} },
+	{ MODKEY,			XK_F11,    togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } }, /*ver todos los tags a la vez*/
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } }, /*ventana enfocada en todos los tags*/
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },

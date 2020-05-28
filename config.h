@@ -12,12 +12,12 @@ static const int horizpadbar        = 2;        /* horizontal padding for status
 static const int vertpadbar         = 8;        /* vertical padding for statusbar */
 static const char *fonts[]          = {"JetBrains Mono:Regular:size=9", "FontAwesome:Regular:pixelsize=12:antialias:true"};
 static const char dmenufont[]       = "monospace:size=10";
-static char normbgcolor[]           = "#1d2021";
-static char normbordercolor[]       = "#1d2021";
+static char normbgcolor[]           = "#282828";
+static char normbordercolor[]       = "#282828";
 static char normfgcolor[]           = "#fbf2c7";
 static char selfgcolor[]            = "#fabd2f";
 static char selbordercolor[]        = "#fabd2f";
-static char selbgcolor[]            = "#1d2021";
+static char selbgcolor[]            = "#282828";
 static char *colors[][3] = {
                /*               fg           bg           border   */
        [SchemeNorm]	=  { normfgcolor, normbgcolor, normbordercolor },
@@ -53,6 +53,8 @@ static const Layout layouts[] = {
 	{ "",      tile },    /* first entry is default */
  	{ "",      dwindle },
 	{ "",      grid },
+	{ "|M|",      centeredmaster },
+	{ ">M>",      centeredfloatingmaster },
 	{ "[M]",      monocle },
 	{ NULL,       NULL },
 };

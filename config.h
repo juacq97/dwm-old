@@ -10,20 +10,20 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 8;        /* vertical padding for statusbar */
-static const char *fonts[]          = {"JetBrains Mono:Regular:size=9", "FontAwesome:Regular:pixelsize=12:antialias:true"};
+static const char *fonts[]          = {"JetBrains Mono:Regular:size=9", "Material Design Icons:Regular:pixelsize=16:antialias:true"};
 static const char dmenufont[]       = "monospace:size=10";
 static char normbgcolor[]           = "#282828";
 static char normbordercolor[]       = "#282828";
 static char normfgcolor[]           = "#fbf2c7";
-static char selfgcolor[]            = "#fabd2f";
-static char selbordercolor[]        = "#fabd2f";
-static char selbgcolor[]            = "#282828";
+static char selfgcolor[]            = "#fbf2c7";
+static char selbordercolor[]        = "#98971a";
+static char selbgcolor[]            = "#98971a";
 static char *colors[][3] = {
                /*               fg           bg           border   */
        [SchemeNorm]	=  { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  	=  { selfgcolor,  selbgcolor,  selbordercolor  },
        [SchemeStatus]   =  { normfgcolor, normbgcolor, "#000000"       },
-       [SchemeTagsSel]  =  { selfgcolor, normbgcolor,  "#000000"       },
+       [SchemeTagsSel]  =  { normbgcolor, selbgcolor,  "#000000"       },
        [SchemeTagsNorm] =  { normfgcolor, normbgcolor, "#000000"       }, 
        [SchemeInfoSel]  =  {normfgcolor, normbgcolor, "#000000"       },
        [SchemeInfoNorm] =  { normfgcolor, normbgcolor, "#000000"       },
@@ -50,12 +50,12 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 #include "layouts.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "",      tile },    /* first entry is default */
- 	{ "",      dwindle },
-	{ "",      grid },
-	{ "|M|",      centeredmaster },
-	{ ">M>",      centeredfloatingmaster },
-	{ "[M]",      monocle },
+	{ "󰕲",      tile },    /* first entry is default */
+ 	{ "󰕴",      dwindle },
+	{ "󰹪",      grid },
+	{ "󱒅",      centeredmaster },
+	{ "󰕬",      centeredfloatingmaster },
+	{ "󱒆",      monocle },
 	{ NULL,       NULL },
 };
 
@@ -91,7 +91,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} }, /*tag anterior*/
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /*tiled*/
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[3]} }, /*monocle*/
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[5]} }, /*monocle*/
 	{ MODKEY,                       XK_s,      togglefloating, {0} }, /*float*/
 	{ MODKEY,			XK_F11,    togglefullscr,  {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } }, /*ver todos los tags a la vez*/

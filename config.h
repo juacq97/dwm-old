@@ -86,6 +86,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_bar,      togglermaster,  {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ MODKEY|ControlMask,             XK_j,      inplacerotate,  {.i = +1} },
+	{ MODKEY|ControlMask,             XK_k,      inplacerotate,  {.i = -1} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_g,      zoom,           {0} }, /*mandar a master*/

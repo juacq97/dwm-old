@@ -82,47 +82,56 @@ static const char *termcmd[]  = { "st", NULL };
 #include "nextprevtag.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_bar,    togglermaster,  {0} },
-	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_j,      inplacerotate,  {.i = +1} },
-	{ MODKEY|ControlMask,           XK_k,      inplacerotate,  {.i = -1} },
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_g,      zoom,           {0} }, /*mandar a master*/
-	{ MODKEY,                       XK_g,      switchcol,    {0} }, /*mandar a master*/
-	{ MODKEY,                       XK_Tab,    view,           {0} }, /*tag anterior*/
-	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /*tiled*/
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[5]} }, /*monocle*/
-	{ MODKEY,                       XK_s,      togglefloating, {0} }, /*float*/
-	{ MODKEY,			XK_F11,    togglefullscr,  {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } }, /*ver todos los tags a la vez*/
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } }, /*ventana enfocada en todos los tags*/
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_l,      view_adjacent,  { .i = +1 } },
-	{ MODKEY|ControlMask,           XK_h,      view_adjacent,  { .i = -1 } },
-	{ MODKEY|ControlMask,           XK_comma,  incnmaster,     {.i = +1 } },
-        { MODKEY|ControlMask,           XK_period, incnmaster,     {.i = -1 } },
-	{ MODKEY|ControlMask,		XK_r,      xrdb,           {.v = NULL } },
-	{ MODKEY|ControlMask|ShiftMask, XK_r,      quit,           {0} },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|Mod1Mask,              XK_space,  cyclelayout,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[6]} },
+		     /* Movimiento de ventanas */
+		     { MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, /*Matar ventana*/
+		     { MODKEY,                       XK_j,      focusstack,     {.i = +1 } }, /*Enfocar siguiente ventana*/
+		     { MODKEY,                       XK_k,      focusstack,     {.i = -1 } }, /*Enfocar anterior ventana*/
+		     { MODKEY|ControlMask,           XK_j,      inplacerotate,  {.i = +1} }, /*Enfocar siguiente ventana sin cambiar con master (usar con deck)*/
+		     { MODKEY|ControlMask,           XK_k,      inplacerotate,  {.i = -1} }, /*Enfocar anterior ventana sin cambiar con master (usar con deck)*/
+		     { MODKEY,                       XK_bar,    togglermaster,  {0} }, /*Cambiar master al lado derecho y viceversa */
+		     { MODKEY|ShiftMask,             XK_g,      zoom,           {0} }, /*mandar ventana a master*/
+		     { MODKEY,                       XK_g,      switchcol,    {0} }, /*Cambiar foco entre stack y master*/
+		     { MODKEY,                       XK_h,      setmfact,       {.f = -0.05} }, /*Hacer más pequeño master*/
+		     { MODKEY,                       XK_l,      setmfact,       {.f = +0.05} }, /*Hacer más grande master*/
+		     { MODKEY|ControlMask,           XK_comma,  incnmaster,     {.i = +1 } }, /*Incrementar master*/
+		     { MODKEY|ControlMask,           XK_period, incnmaster,     {.i = -1 } }, /*Disminuir master*/
+		     { MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } }, /*Mover ventana hacia abajo*/
+		     { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } }, /*Mover ventana hacia arriba*/
+
+		     /* Tags*/
+		     { MODKEY,                       XK_Tab,    view,           {0} }, /*tag anterior*/
+		     { MODKEY,                       XK_0,      view,           {.ui = ~0 } }, /*ver todos los tags a la vez*/
+		     { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } }, /*ventana enfocada en todos los tags*/
+		     { MODKEY|ControlMask,           XK_l,      view_adjacent,  { .i = +1 } }, /*Ver siguiente tag*/
+		     { MODKEY|ControlMask,           XK_h,      view_adjacent,  { .i = -1 } }, /*Ver tag anterior*/
+		     TAGKEYS(                        XK_1,                      0) /*Enfocar tag 1*/ 
+		     TAGKEYS(                        XK_2,                      1) /*Enfocar tag 2*/
+		     TAGKEYS(                        XK_3,                      2) /*Enfocar tag 3*/
+		     TAGKEYS(                        XK_4,                      3) /*Enfocar tag 4*/
+		     TAGKEYS(                        XK_5,                      4) /*Enfocar tag 5*/
+		     TAGKEYS(                        XK_6,                      5) /*Enfocar tag 6*/
+		     TAGKEYS(                        XK_7,                      6) /*Enfocar tag 7*/
+		     TAGKEYS(                        XK_8,                      7) /*Enfocar tag 8*/
+		     TAGKEYS(                        XK_9,                      8) /*Enfocar tag 9*/
+
+		     /*Layouts*/
+		     { MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /*tiled*/
+		     { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[5]} }, /*monocle*/
+		     { MODKEY,                       XK_s,      togglefloating, {0} }, /*float*/
+		     { MODKEY,			     XK_F11,    togglefullscr,  {0} }, /*Fullscreen*/
+		     { MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[6]} }, /*Deck*/
+		     { MODKEY|Mod1Mask,              XK_space,  cyclelayout,    {.i = +1 } }, /*Ciclar layouts*/
+
+		     /*Monitores*/
+		     { MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, /*Enfocar siguiente monitor*/
+		     { MODKEY,                       XK_period, focusmon,       {.i = +1 } }, /*Enfocar siguiente monitor*/
+		     { MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } }, /*Mandar ventana a monitor anterior*/
+		     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, /*Mandar ventana a monitor siguiente*/
+
+		     /* dwm especifico*/
+		     { MODKEY|ControlMask,	     XK_r,      xrdb,           {.v = NULL } }, /*Actualizar xrdb (si se usa)*/
+		     { MODKEY|ControlMask|ShiftMask, XK_r,      quit,           {0} }, /*Actualizar dwm (si se modifica el código fuente*/
+		     { MODKEY,                       XK_b,      togglebar,      {0} }, /*Activar o desactivar panel*/
 };
 
 /* button definitions */

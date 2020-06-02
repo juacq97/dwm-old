@@ -83,11 +83,11 @@ static const char *termcmd[]  = { "st", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_bar,      togglermaster,  {0} },
+	{ MODKEY,                       XK_bar,    togglermaster,  {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY|ControlMask,             XK_j,      inplacerotate,  {.i = +1} },
-	{ MODKEY|ControlMask,             XK_k,      inplacerotate,  {.i = -1} },
+	{ MODKEY|ControlMask,           XK_j,      inplacerotate,  {.i = +1} },
+	{ MODKEY|ControlMask,           XK_k,      inplacerotate,  {.i = -1} },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_g,      zoom,           {0} }, /*mandar a master*/
@@ -122,7 +122,7 @@ static Key keys[] = {
 	{ MODKEY|Mod1Mask,              XK_space,  cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ MODKEY,                       XK_c,      setlayout,      {.v = &layouts[6]} },
+	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[6]} },
 };
 
 /* button definitions */

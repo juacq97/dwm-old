@@ -4,7 +4,7 @@
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 6;
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int rmaster            = 0;        /* 1 means master-area is initially on the right */
+static const int rmaster            = 0;        /* 1 = master at right*/
 int barPadding			    = 8;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -15,14 +15,14 @@ static const char dmenufont[]       = "monospace:size=10";
 static char normbgcolor[]           = "#47406E";
 static char normbordercolor[]       = "#47406E";
 static char normfgcolor[]           = "#cdabb8";
-static char selfgcolor[]            = "#fbf2c7";
+static char selfgcolor[]            = "#705b86";
 static char selbordercolor[]        = "#DC6C6C";
 static char selbgcolor[]            = "#DC6C6C";
 static char *colors[][3] = {
                /*               fg           bg           border   */
        [SchemeNorm]	=  { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  	=  { selfgcolor,  selbgcolor,  selbordercolor  },
-       [SchemeStatus]   =  { normfgcolor, normbgcolor, "#000000"       },
+       [SchemeStatus]   =  { normfgcolor, selbgcolor, "#000000"       },
        [SchemeTagsSel]  =  { normbgcolor, selbgcolor,  "#000000"       },
        [SchemeTagsNorm] =  { normbgcolor, normfgcolor, "#000000"       }, 
        [SchemeInfoSel]  =  {normfgcolor, normbgcolor, "#000000"       },
@@ -30,7 +30,7 @@ static char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4"};
+static const char *tags[] = { "D", "W", "M"};
 
 static const Rule rules[] = {
 	/* xprop(1):

@@ -12,8 +12,8 @@ static const int horizpadbar        = 2;        /* horizontal padding for status
 static const int vertpadbar         = 8;        /* vertical padding for statusbar */
 static const char *fonts[]          = {"JetBrains Mono:Regular:size=9", "Material Design Icons:Regular:pixelsize=16:antialias:true"};
 static const char dmenufont[]       = "monospace:size=10";
-static char normbgcolor[]           = "#282828";
-static char normbordercolor[]       = "#282828";
+static char normbgcolor[]           = "#433D6C";
+static char normbordercolor[]       = "#433D6C";
 static char normfgcolor[]           = "#fbf2c7";
 static char selfgcolor[]            = "#fbf2c7";
 static char selbordercolor[]        = "#98971a";

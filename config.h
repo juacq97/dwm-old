@@ -12,19 +12,19 @@ static const int horizpadbar        = 2;        /* horizontal padding for status
 static const int vertpadbar         = 8;        /* vertical padding for statusbar */
 static const char *fonts[]          = {"JetBrains Mono:Regular:size=9", "Material Design Icons:Regular:pixelsize=16:antialias:true"};
 static const char dmenufont[]       = "monospace:size=10";
-static char normbgcolor[]           = "#433D6C";
-static char normbordercolor[]       = "#433D6C";
-static char normfgcolor[]           = "#fbf2c7";
+static char normbgcolor[]           = "#47406E";
+static char normbordercolor[]       = "#47406E";
+static char normfgcolor[]           = "#cdabb8";
 static char selfgcolor[]            = "#fbf2c7";
-static char selbordercolor[]        = "#98971a";
-static char selbgcolor[]            = "#98971a";
+static char selbordercolor[]        = "#DC6C6C";
+static char selbgcolor[]            = "#DC6C6C";
 static char *colors[][3] = {
                /*               fg           bg           border   */
        [SchemeNorm]	=  { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  	=  { selfgcolor,  selbgcolor,  selbordercolor  },
        [SchemeStatus]   =  { normfgcolor, normbgcolor, "#000000"       },
        [SchemeTagsSel]  =  { normbgcolor, selbgcolor,  "#000000"       },
-       [SchemeTagsNorm] =  { normfgcolor, normbgcolor, "#000000"       }, 
+       [SchemeTagsNorm] =  { normbgcolor, normfgcolor, "#000000"       }, 
        [SchemeInfoSel]  =  {normfgcolor, normbgcolor, "#000000"       },
        [SchemeInfoNorm] =  { normfgcolor, normbgcolor, "#000000"       },
 };

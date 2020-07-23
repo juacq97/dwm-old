@@ -8,29 +8,30 @@ static const int rmaster            = 0;        /* 1 = master at right*/
 int barPadding			    = 8;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const char buttonbar[]       = "󰇙";
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 8;        /* vertical padding for statusbar */
+static const int vertpadbar         = 12;        /* vertical padding for statusbar */
 static const char *fonts[]          = {"JetBrains Mono:Regular:size=9", "Material Design Icons:Regular:pixelsize=16:antialias:true"};
 static const char dmenufont[]       = "monospace:size=10";
-static char normbgcolor[]           = "#47406E";
-static char normbordercolor[]       = "#47406E";
-static char normfgcolor[]           = "#cdabb8";
+static char normbgcolor[]           = "#282a36";
+static char normbordercolor[]       = "#4d4d4d";
+static char normfgcolor[]           = "#f8f8f2";
 static char selfgcolor[]            = "#705b86";
-static char selbordercolor[]        = "#DC6C6C";
-static char selbgcolor[]            = "#DC6C6C";
+static char selbordercolor[]        = "#f55555";
+static char selbgcolor[]            = "#f55555";
 static char *colors[][3] = {
                /*               fg           bg           border   */
        [SchemeNorm]	=  { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  	=  { selfgcolor,  selbgcolor,  selbordercolor  },
        [SchemeStatus]   =  { normfgcolor, selbgcolor, "#000000"       },
        [SchemeTagsSel]  =  { normbgcolor, selbgcolor,  "#000000"       },
-       [SchemeTagsNorm] =  { normbgcolor, normfgcolor, "#000000"       }, 
+       [SchemeTagsNorm] =  { normfgcolor, normbgcolor, "#000000"       }, 
        [SchemeInfoSel]  =  {normfgcolor, normbgcolor, "#000000"       },
        [SchemeInfoNorm] =  { normfgcolor, normbgcolor, "#000000"       },
 };
 
 /* tagging */
-static const char *tags[] = { "D", "W", "M"};
+static const char *tags[] = { "󰯶", "W", "M"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -129,8 +130,7 @@ static Key keys[] = {
 		     { MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } }, /*Mandar ventana a monitor siguiente*/
 
 		     /* dwm especifico*/
-		     { MODKEY|ControlMask,	     XK_r,      xrdb,           {.v = NULL } }, /*Actualizar xrdb (si se usa)*/
-		     { MODKEY|ControlMask|ShiftMask, XK_r,      quit,           {0} }, /*Actualizar dwm (si se modifica el código fuente*/
+		     { MODKEY|ControlMask|ShiftMask, XK_r,      xrdb,           {.v = NULL } }, /*Actualizar xrdb (si se usa)*/
 		     { MODKEY,                       XK_b,      togglebar,      {0} }, /*Activar o desactivar panel*/
 };
 
@@ -139,6 +139,7 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
+	{ ClkButton,            0,              Button1,        spawn,          SHCMD("rofi -show drun -theme dracula") },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },

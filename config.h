@@ -8,7 +8,6 @@ static const int rmaster            = 0;        /* 1 = master at right*/
 int barPadding			    = 8;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char buttonbar[]       = "󰇙";
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 12;        /* vertical padding for statusbar */
 static const char *fonts[]          = {"JetBrains Mono:Regular:size=9", "Material Design Icons:Regular:pixelsize=16:antialias:true"};
@@ -24,14 +23,14 @@ static char *colors[][3] = {
        [SchemeNorm]	=  { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  	=  { selfgcolor,  selbgcolor,  selbordercolor  },
        [SchemeStatus]   =  { normfgcolor, selbgcolor, "#000000"       },
-       [SchemeTagsSel]  =  { normbgcolor, selbgcolor,  "#000000"       },
+       [SchemeTagsSel]  =  { selbgcolor,  normbgcolor,  "#000000"       },
        [SchemeTagsNorm] =  { normfgcolor, normbgcolor, "#000000"       }, 
        [SchemeInfoSel]  =  {normfgcolor, normbgcolor, "#000000"       },
        [SchemeInfoNorm] =  { normfgcolor, normbgcolor, "#000000"       },
 };
 
 /* tagging */
-static const char *tags[] = { "󰯶", "W", "M"};
+static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -81,6 +80,7 @@ static const char *termcmd[]  = { "st", NULL };
 
 #include "movestack.c"
 #include "nextprevtag.c"
+#include "shiftview.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 		     /* Movimiento de ventanas */
@@ -103,8 +103,8 @@ static Key keys[] = {
 		     { MODKEY,                       XK_Tab,    view,           {0} }, /*tag anterior*/
 		     { MODKEY,                       XK_0,      view,           {.ui = ~0 } }, /*ver todos los tags a la vez*/
 		     { MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } }, /*ventana enfocada en todos los tags*/
-		     { MODKEY|ControlMask,           XK_l,      view_adjacent,  { .i = +1 } }, /*Ver siguiente tag*/
-		     { MODKEY|ControlMask,           XK_h,      view_adjacent,  { .i = -1 } }, /*Ver tag anterior*/
+		     { MODKEY|ControlMask,           XK_l,      shiftview,  { .i = +1 } }, /*Ver siguiente tag*/
+		     { MODKEY|ControlMask,           XK_h,      shiftview,  { .i = -1 } }, /*Ver tag anterior*/
 		     TAGKEYS(                        XK_1,                      0) /*Enfocar tag 1*/ 
 		     TAGKEYS(                        XK_2,                      1) /*Enfocar tag 2*/
 		     TAGKEYS(                        XK_3,                      2) /*Enfocar tag 3*/
@@ -139,7 +139,6 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkButton,            0,              Button1,        spawn,          SHCMD("rofi -show drun -theme dracula") },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
